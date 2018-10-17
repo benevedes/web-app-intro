@@ -65,6 +65,7 @@ def logout():
     return redirect(url_for('home'))
 
 @app.route('/authorized')
+@github.authorized_handler
 def authorized():
     resp = github.authorized_response()
 

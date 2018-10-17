@@ -22,6 +22,29 @@
 				<li><a href='/ctof'>C to F</a></li>
 				<li><a href='/mtokm'>M to Km</a></li>
 			</u1>
+
+			<u1 class="nav navbar-nav navbar-right">
+
+		<!-- Checks if logged_in is true to display your github avatar and name-->
+		<!-- logged_in is injected from webapp.py using the token from OAuth -->
+
+			{% if logged_in %}
+
+			<li><a class="navbar-brand" href="#">
+					<img src="{{ session['user_data']['avatar_url'] }}&s=30"
+	  					width="30" height="30" style="display: inline-block;" ></a></li>
+			<li><p class="navbar-text">{{ session['user_data']['name']}}</p></li>
+			<li><p class="navbar-text">Github userid: {{ session['user_data']['login']}}</li>
+			{% endif %}
+
+			<li>
+				{% if logged_in %}
+						<a href="/logout">Logout</a>
+					{% else %}
+						<a href="/login">Login</a>
+					{% endif %}
+				</li>
+		</u1>
 		</div>
 	</div>
 </nav>

@@ -159,5 +159,5 @@ def mtokm(mdist):
     return (1.61*mdist)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True)
 

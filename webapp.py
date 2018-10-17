@@ -64,7 +64,7 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('home'))
 
-@app.route('/login/authorized')
+@app.route('/authorized')
 def authorized():
     resp = github.authorized_response()
 

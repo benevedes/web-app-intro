@@ -22,7 +22,7 @@ if os.getenv('GITHUB_CLIENT_ID') == None or \
                     APP_SECRET_KEY
                 ''')
 app = Flash(__name__)
-app.debug = False
+app.debug = True
 app.secret_key = os.environ['APP_SECRET_KEY']
 oauth = OAuth(app)
 

@@ -21,7 +21,7 @@ if os.getenv('GITHUB_CLIENT_ID') == None or \
                     GITHUB_ORG
                     APP_SECRET_KEY
                 ''')
-app = Flash(__name__)
+app = Flask(__name__)
 app.debug = True
 app.secret_key = os.environ['APP_SECRET_KEY']
 oauth = OAuth(app)

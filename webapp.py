@@ -13,7 +13,7 @@ class GithubOAuthVarsNotDefined(Exception):
 if os.getenv('GITHUB_CLIENT_ID') == None or \
         os.getenv('GITHUB_CLIENT_SECRET') == None or \
         os.getenv('APP_SECRET_KEY') == None or \
-        os.getenv('GITHUB_ORG') == NOne:
+        os.getenv('GITHUB_ORG') == None:
             raise GithubOAuthVarsNotDefined('''
                 Please define environment variables:
                     GITHUB_CLIENT_ID
@@ -54,7 +54,7 @@ def inject_github_org():
 def home():
     return render_template('home.html')
 
-@app.route('/stuff')
+@app.route('/login')
 def login():
     return github.authorize(callback=url_for('authorized', _external=True, _scheme='https')) 
 
@@ -64,7 +64,7 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('home'))
 
-@app.route('/stuff/authorized')
+@app.route('/login/authorized')
 def authorized():
     resp = github.authorized_response()
 

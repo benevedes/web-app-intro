@@ -56,7 +56,7 @@ def home():
 
 @app.route('/login')
 def login():
-    return github.authorize(callback=url_for('authorized', _external=True, _scheme='https'))
+    return github.authorize(callback=url_for('authorized', _scheme='https'))
 
 @app.route('/logout')
 def logout():
@@ -65,7 +65,6 @@ def logout():
     return redirect(url_for('home'))
 
 @app.route('/login/authorized')
-@github.authorized_handler
 def authorized():
     resp = github.authorized_response()
 
@@ -160,5 +159,5 @@ def mtokm(mdist):
     return (1.61*mdist)
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run()
 

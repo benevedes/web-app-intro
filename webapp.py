@@ -56,7 +56,6 @@ def home():
 
 @app.route('/login')
 def login():
-    render_template('home.html')
     return github.authorize(callback=url_for('authorized',_external = True, _scheme='https'))
 
 @app.route('/logout')

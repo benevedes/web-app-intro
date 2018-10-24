@@ -54,9 +54,9 @@ def inject_github_org():
 def home():
     return render_template('home.html')
 
-@app.route('/login')
+@app.route('/stuff')
 def login():
-    return render_template('login.html')
+    return github.authorize(callback=url_for('authorized', _external=True, _scheme='https')) 
 
 @app.route('/logout')
 def logout():
@@ -64,7 +64,7 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('home'))
 
-@app.route('/login/authorized')
+@app.route('/stuff/authorized')
 def authorized():
     resp = github.authorized_response()
 
